@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import React from "react";
 import { motion } from "framer-motion";
 import { AllContexts } from "../Context/Allcontext";
-
+import { backend_url } from "../App";
 // Simple lightbox modal (unchanged)
 const LightboxModal = ({ isOpen, image, onClose }) => {
   if (!isOpen) return null;
@@ -42,7 +42,7 @@ export default function Home() {
   const navigate = useNavigate();
   const {ishow , setshow}  = useContext(AllContexts)
   useEffect(() => {
-    axios.get("http://localhost:5000/api/content")
+    axios.get(backend_url + "/api/content")
       .then(res => {
         setContent(res.data);
         setLoading(false);
